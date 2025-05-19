@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 //RETURN RANDOM SECTIONS
-function generateTheme(row) {
+export function generateTheme(row) {
   const outputFolder = path.join(
     __dirname,
     "..",
@@ -723,7 +723,3 @@ function generateTheme(row) {
 
   return jsonData;
 }
-
-module.exports = {
-  generateTheme,
-};
