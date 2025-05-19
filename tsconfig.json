@@ -1,13 +1,9 @@
 {
   "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2017",
     "declaration": true,
-    "emitDeclarationOnly": false,
-    "outDir": "dist",
-    "rootDir": "src",
-    "module": "commonjs",
-    "target": "es6",
-    "strict": true,
-    "esModuleInterop": true
-  },
-  "include": ["**/*.ts", "src/index.ts"]
+    "outDir": "./dist",
+    "moduleResolution": "Node"
+  }
 }
