@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/HypeCodeTeam/compliance-template-sdk/issues"
   },
-  "homepage": "https://github.com/HypeCodeTeam/compliance-template-sdk#readme"
+  "homepage": "https://github.com/HypeCodeTeam/compliance-template-sdk#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
 }
