@@ -3,7 +3,7 @@
   "version": "1.48.4",
   "description": "JS scripts to generate random templates for compliance automation",
   "main": "dist/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
