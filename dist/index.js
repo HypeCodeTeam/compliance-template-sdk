@@ -1,20 +1,16 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-export function useTheme(themeName) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const { handler } = yield import(`./theme/${themeName}.js`);
-            return handler();
-        }
-        catch (error) {
-            throw new Error(`Theme "${themeName}" not found or invalid: ${error}`);
-        }
-    });
+import path from "path";
+import { pathToFileURL } from "url";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+export async function useTheme(themeName) {
+    try {
+        const themePath = pathToFileURL(path.join(__dirname, "theme", `${themeName}.js`)).href;
+        const { handler } = await import(themePath);
+        return handler();
+    }
+    catch (error) {
+        throw new Error(`Theme "${themeName}" not found or invalid: ${error}`);
+    }
 }
