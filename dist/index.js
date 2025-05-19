@@ -1,17 +1,20 @@
-const path = require("path");
-export function generateWithTheme(themeName, data) {
-    const themeModuleName = themeName.replace(/-([a-z])/g, (_, g1) => g1.toUpperCase()) +
-        "Theme";
-    const themePath = path.join(__dirname, "themes", `${themeModuleName}.js`);
-    try {
-        const themeModule = require(themePath);
-        if (typeof themeModule.generateTheme !== "function") {
-            throw new Error(`Le module ${themeModuleName} ne contient pas de fonction 'generateTheme'.`);
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+export function useTheme(themeName) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { handler } = yield import(`./theme/${themeName}.js`);
+            return handler();
         }
-        return themeModule.generateTheme(data);
-    }
-    catch (error) {
-        console.error(`Erreur lors du chargement du thème '${themeName}':`, error);
-        throw error;
-    }
+        catch (error) {
+            throw new Error(`Theme "${themeName}" not found or invalid: ${error}`);
+        }
+    });
 }
