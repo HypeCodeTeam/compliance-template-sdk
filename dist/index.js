@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateFromTheme = generateFromTheme;
 const path = require("path");
-function generateFromTheme(themeName, data) {
+export function generateWithTheme(themeName, data) {
     const themeModuleName = themeName.replace(/-([a-z])/g, (_, g1) => g1.toUpperCase()) +
         "Theme";
     const themePath = path.resolve(__dirname, "themes", `${themeModuleName}.js`);
@@ -14,6 +11,7 @@ function generateFromTheme(themeName, data) {
         return themeModule.generateTheme(data);
     }
     catch (error) {
+        console.error(`Erreur lors du chargement du thème ${themeName} :`, error);
         throw error;
     }
 }

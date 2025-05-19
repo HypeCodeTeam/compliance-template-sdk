@@ -1,1 +1,1 @@
-export declare function generateFromTheme(themeName: string, data: any): any;
+export declare function generateWithTheme(themeName: string, data: any): any;
