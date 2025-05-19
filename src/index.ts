@@ -1,9 +1,10 @@
 const path = require("path");
 
-export function generateFromTheme(themeName: string, data: any) {
+export function generateWithTheme(themeName: string, data: any) {
   const themeModuleName =
     themeName.replace(/-([a-z])/g, (_: any, g1: string) => g1.toUpperCase()) +
     "Theme";
+
   const themePath = path.resolve(__dirname, "themes", `${themeModuleName}.js`);
 
   try {
@@ -17,6 +18,7 @@ export function generateFromTheme(themeName: string, data: any) {
 
     return themeModule.generateTheme(data);
   } catch (error: any) {
+    console.error(`Erreur lors du chargement du thème ${themeName} :`, error);
     throw error;
   }
 }
