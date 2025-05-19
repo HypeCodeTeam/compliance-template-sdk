@@ -41,5 +41,5 @@ const themeMap = {
     autreTheme,
 };
 function useTheme(themeName) {
-    return themeName;
+    return themeMap[themeName].handler();
 }

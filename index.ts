@@ -7,5 +7,5 @@ const themeMap: Record<string, { handler: () => string }> = {
 };
 
 export function useTheme(themeName: string): string {
-  return themeName;
+  return themeMap[themeName].handler();
 }
