@@ -1,12 +1,8 @@
 {
   "name": "compliance-template-sdk",
-  "version": "1.48.4",
-  "description": "JS scripts to generate random templates for compliance automation",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
-  },
-  "devDependencies": {
-    "typescript": "^5.8.3"
   }
 }

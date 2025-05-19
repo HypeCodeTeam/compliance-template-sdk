@@ -41,9 +41,5 @@ const themeMap = {
     autreTheme,
 };
 function useTheme(themeName) {
-    const theme = themeMap[themeName];
-    if (!theme) {
-        throw new Error(`Theme "${themeName}" not found.`);
-    }
-    return theme.handler();
+    return themeName;
 }
