@@ -11,7 +11,6 @@ export async function useTheme(themeName: string): Promise<string> {
     const themePath = pathToFileURL(
       path.join(__dirname, "theme", `${themeName}.js`)
     ).href;
-
     const { handler } = await import(themePath);
     return handler();
   } catch (error) {
