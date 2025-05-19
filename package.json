@@ -9,7 +9,7 @@
     "build": "tsc"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/HypeCodeTeam/compliance-template-sdk.git"
   },
   "keywords": [],

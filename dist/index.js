@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateFromTheme = generateFromTheme;
 const path = require("path");
 function generateFromTheme(themeName, data) {
     const themeModuleName = themeName.replace(/-([a-z])/g, (_, g1) => g1.toUpperCase()) +
@@ -15,6 +17,3 @@ function generateFromTheme(themeName, data) {
         throw error;
     }
 }
-module.exports = {
-    generateFromTheme,
-};

@@ -1,6 +1,6 @@
 const path = require("path");
 
-function generateFromTheme(themeName: string, data: any) {
+export function generateFromTheme(themeName: string, data: any) {
   const themeModuleName =
     themeName.replace(/-([a-z])/g, (_: any, g1: string) => g1.toUpperCase()) +
     "Theme";
@@ -20,7 +20,3 @@ function generateFromTheme(themeName: string, data: any) {
     throw error;
   }
 }
-
-module.exports = {
-  generateFromTheme,
-};
