@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.handler = handler;
-function handler() {
-    return "Coucou autre thème";
+export function handler() {
+  return "Coucou autre thème";
 }

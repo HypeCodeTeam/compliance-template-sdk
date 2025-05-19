@@ -1,11 +1,29 @@
-import * as streamPortal from "./theme/streamPortal";
-import * as autreTheme from "./theme/autreTheme";
+import path from "path";
+import { pathToFileURL } from "url";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-const themeMap: Record<string, { handler: () => string }> = {
-  streamPortal,
-  autreTheme,
-};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-export function useTheme(themeName: string): string {
-  return themeMap[themeName].handler();
+export async function useTheme(themeName: string): Promise<string> {
+  try {
+    const filePath = pathToFileURL(
+      path.join(__dirname, "theme", `${themeName}.js`)
+    ).href;
+
+    const themeModule = await import(filePath);
+
+    if (!themeModule.handler || typeof themeModule.handler !== "function") {
+      throw new Error(
+        `Module "${themeName}" n'exporte pas de fonction handler.`
+      );
+    }
+
+    return themeModule.handler();
+  } catch (err) {
+    throw new Error(
+      `Erreur lors du chargement du thème "${themeName}" : ${err}`
+    );
+  }
 }

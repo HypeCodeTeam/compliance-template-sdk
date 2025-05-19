@@ -1,45 +1,19 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
+import path from "path";
+import { pathToFileURL } from "url";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+export async function useTheme(themeName) {
+    try {
+        const filePath = pathToFileURL(path.join(__dirname, "theme", `${themeName}.js`)).href;
+        const themeModule = await import(filePath);
+        if (!themeModule.handler || typeof themeModule.handler !== "function") {
+            throw new Error(`Module "${themeName}" n'exporte pas de fonction handler.`);
+        }
+        return themeModule.handler();
     }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useTheme = useTheme;
-const streamPortal = __importStar(require("./theme/streamPortal"));
-const autreTheme = __importStar(require("./theme/autreTheme"));
-const themeMap = {
-    streamPortal,
-    autreTheme,
-};
-function useTheme(themeName) {
-    return themeMap[themeName].handler();
+    catch (err) {
+        throw new Error(`Erreur lors du chargement du thème "${themeName}" : ${err}`);
+    }
 }
