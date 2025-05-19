@@ -1,19 +1,15 @@
-import path from "path";
-import { pathToFileURL } from "url";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import * as streamPortal from "./theme/streamPortal";
+import * as autreTheme from "./theme/autreTheme";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const themeMap: Record<string, { handler: () => string }> = {
+  streamPortal,
+  autreTheme,
+};
 
-export async function useTheme(themeName: string): Promise<string> {
-  try {
-    const themePath = pathToFileURL(
-      path.join(__dirname, "theme", `${themeName}.js`)
-    ).href;
-    const { handler } = await import(themePath);
-    return handler();
-  } catch (error) {
-    throw new Error(`Theme "${themeName}" not found or invalid: ${error}`);
+export function useTheme(themeName: string): string {
+  const theme = themeMap[themeName];
+  if (!theme) {
+    throw new Error(`Theme "${themeName}" not found.`);
   }
+  return theme.handler();
 }

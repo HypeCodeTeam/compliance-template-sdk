@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
     "target": "ES2020",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "esModuleInterop": true
   },
-  "include": ["index.ts", "theme/*.js"]
+  "include": ["index.ts", "theme/*.ts"]
 }
