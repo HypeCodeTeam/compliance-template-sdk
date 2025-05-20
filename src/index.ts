@@ -1,9 +1,9 @@
 export async function getThemeContent(themeName: string): Promise<string> {
   try {
-    const themeModule = await import(`./themes/${themeName}.ts`);
+    const themeModule = await import(`./themes/${themeName}`);
     
     if (typeof themeModule.default === 'function') {
-      return themeModule.default();
+      return themeModule.default(themeName);
     }
 
     throw new Error(`Le fichier pour le thème "${themeName}" n'exporte pas de fonction par défaut`);
