@@ -1,1 +1,1 @@
-export declare function echoString(themeName: string): string;
+export declare function getThemeContent(themeName: string): Promise<string>;
