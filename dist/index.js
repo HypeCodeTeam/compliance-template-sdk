@@ -37,10 +37,12 @@ exports.getThemeContent = getThemeContent;
 async function getThemeContent(themeName) {
     try {
         const themeModule = await Promise.resolve(`${`./themes/${themeName}`}`).then(s => __importStar(require(s)));
-        return themeModule.default(themeName);
+        if (typeof themeModule.default === 'function') {
+            return themeModule.default(themeName);
+        }
+        throw new Error(`Le fichier pour le thème "${themeName}" n'exporte pas de fonction par défaut`);
     }
     catch (err) {
         throw new Error(`Thème "${themeName}" introuvable ou erreur lors de l'import.`);
     }
 }
-exports.default = { getThemeContent };
