@@ -43,3 +43,4 @@ async function getThemeContent(themeName) {
         throw new Error(`Thème "${themeName}" introuvable ou erreur lors de l'import.`);
     }
 }
+exports.default = { getThemeContent };

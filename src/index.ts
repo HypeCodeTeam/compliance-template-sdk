@@ -7,3 +7,6 @@ export async function getThemeContent(themeName: string): Promise<string> {
     throw new Error(`Thème "${themeName}" introuvable ou erreur lors de l'import.`);
   }
 }
+
+export default { getThemeContent };
+
