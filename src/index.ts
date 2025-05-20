@@ -1,6 +1,6 @@
 export async function getThemeContent(themeName: string): Promise<string> {
   try {
-    const themeModule = await import(`./themes/${themeName}`);
+    const themeModule = await import(`./themes/${themeName}.ts`);
     
     if (typeof themeModule.default === 'function') {
       return themeModule.default();
