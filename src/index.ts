@@ -1,4 +1,4 @@
-export async function getThemeContent(themeName) {
+export async function getThemeContent(themeName: string) {
   try {
     const themeModule = await import(`./themes/${themeName}`);
     return themeModule.default(themeName);
