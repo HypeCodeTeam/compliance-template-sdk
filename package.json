@@ -4,7 +4,6 @@
   "description": "JS scripts to generate random templates for compliance automation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc"
   },
