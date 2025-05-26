@@ -843,7 +843,11 @@ function getRandomCodeSectionsHc2() {
   return codes[Math.floor(Math.random() * codes.length)];
 }
 function processItemHcStyles2(selectedCode) {
-  const processedStyles = {};
+  const processedStyles = {
+    background: false,
+    direction: "row",
+    displayCard: false
+  };
   switch (selectedCode) {
     case "s1":
     case "s2":
@@ -921,21 +925,21 @@ function templateStreamPortal(themeName, sections) {
   return {
     hnc: {
       header: getRandomHncHeader(),
-      sectionTop: getRandomSectionTop(themeName, sections),
+      sectionTop: getRandomSectionTop(themeName, sections[0]),
       sections: getRandomHncSection3(),
-      ...includeFeature && { features: getRandomFeature(themeName, sections) },
-      ...includeBanner && { banner: getRandomBanner(themeName, sections) },
-      ...includePlan && { plan: getRandomPlan(themeName, sections) },
+      ...includeFeature && { features: getRandomFeature(themeName, sections[0]) },
+      ...includeBanner && { banner: getRandomBanner(themeName, sections[0]) },
+      ...includePlan && { plan: getRandomPlan(themeName, sections[0]) },
       ...includeFAQ && { faq: getRandomFAQ() },
-      footer: getRandomFooter(themeName, sections)
+      footer: getRandomFooter(themeName, sections[0])
     },
     hc: {
       header: getRandomHcHeader(),
       sections: getRandomHcSection3(),
-      ...includeFeature && { features: getRandomFeature(themeName, sections) },
-      ...includeBanner && { banner: getRandomBanner(themeName, sections) },
-      ...includePlan && { plan: getRandomPlan(themeName, sections) },
-      footer: getRandomFooter(themeName, sections)
+      ...includeFeature && { features: getRandomFeature(themeName, sections[0]) },
+      ...includeBanner && { banner: getRandomBanner(themeName, sections[0]) },
+      ...includePlan && { plan: getRandomPlan(themeName, sections[0]) },
+      footer: getRandomFooter(themeName, sections[0])
     },
     details: getRandomDetails3(),
     theme: {
@@ -961,7 +965,7 @@ function getThemeTemplate(themeName, sections) {
   console.log(themeName);
   switch (themeName) {
     case "mono-portal":
-      return templateMonoPortal(themeName, sections);
+      return templateMonoPortal(themeName, sections[0]);
     case "multi-portal":
       return templateMultiPortal(themeName);
     case "stream-portal":

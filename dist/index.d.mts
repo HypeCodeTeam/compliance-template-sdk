@@ -1,4 +1,4 @@
-declare function getThemeTemplate(themeName: string, sections: string): {
+declare function getThemeTemplate(themeName: string, sections: string[]): {
     hnc: {
         footer: {
             style: {
