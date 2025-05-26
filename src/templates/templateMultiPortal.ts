@@ -16,9 +16,11 @@ import {
   includePlan,
   categoriesArray,
   alignment,
-  type,
   direction,
   getColorTheme,
+  typeAssets,
+  getAlignment,
+  getContentPosition,
 } from '../utils/index';
 import { getRandomPlan } from '../utils/plan';
 import { getRandomSectionTop } from '../utils/sectionTop';
@@ -51,11 +53,11 @@ function getRandomHncSection() {
 
     if (selectedCode === 's4') {
       const categoryLimits = limits[category] || limits.default;
-      const typeLimits = categoryLimits[type];
+      const typeLimits = categoryLimits[typeAssets];
       const maxIndex = typeLimits[1];
-      imagePath = `${category}/${type}/${maxIndex}`;
+      imagePath = `${category}/${typeAssets}/${maxIndex}`;
     } else {
-      imagePath = `${category}/${type}/${getRandomImageNumber(category, type)}.png`;
+      imagePath = `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`;
     }
 
     processedSectionData.items[category] = {
@@ -80,11 +82,7 @@ function getRandomCodeSectionsHc() {
 }
 
 function processItemHcStyles(selectedCode: string) {
-  const processedStyles = {
-    background: false,
-    direction: 'row',
-    displayCard: false,
-  };
+  const processedStyles: Record<string, boolean | string> = {};
 
   switch (selectedCode) {
     case 's1':
@@ -162,32 +160,13 @@ function getRandomDetails() {
 
   categoriesArray.forEach(category => {
     const categoryData = {
-      headerImage: `${category}/headers/${getRandomImageNumber(category, 'headers')}.png`,
-      detailImage: `${category}/details/${getRandomImageNumber(category, 'details')}.png`,
+      headerImage: `${category}/headers/${getRandomImageNumber('headers', category)}.png`,
+      detailImage: `${category}/details/${getRandomImageNumber('details', category)}.png`,
     };
     processedSectionData.sectionTop[category] = categoryData;
   });
 
   return processedSectionData;
-}
-
-function getAlignment(selectedCode: string, index: number): string {
-  if (selectedCode !== 's1') {
-    return alignment;
-  }
-
-  if (index === 0) {
-    return 'start';
-  }
-
-  return index % 2 === 1 ? 'end' : 'start';
-}
-
-function getContentPosition(index: number): string {
-  if (index === 0) {
-    return 'left';
-  }
-  return index % 2 === 1 ? 'right' : 'left';
 }
 
 export function templateMultiPortal(themeName: string) {

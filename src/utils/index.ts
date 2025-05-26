@@ -188,3 +188,22 @@ export function getColorTheme() {
     secondaryColor: `#${secondaryColor}`,
   };
 }
+
+export function getAlignment(selectedCode: string, index: number): string {
+  if (selectedCode !== 's1') {
+    return alignment;
+  }
+
+  if (index === 0) {
+    return 'start';
+  }
+
+  return index % 2 === 1 ? 'end' : 'start';
+}
+
+export function getContentPosition(index: number): string {
+  if (index === 0) {
+    return 'left';
+  }
+  return index % 2 === 1 ? 'right' : 'left';
+}

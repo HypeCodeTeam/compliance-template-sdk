@@ -160,6 +160,21 @@ function getColorTheme() {
     secondaryColor: `#${secondaryColor}`
   };
 }
+function getAlignment(selectedCode, index) {
+  if (selectedCode !== "s1") {
+    return alignment;
+  }
+  if (index === 0) {
+    return "start";
+  }
+  return index % 2 === 1 ? "end" : "start";
+}
+function getContentPosition(index) {
+  if (index === 0) {
+    return "left";
+  }
+  return index % 2 === 1 ? "right" : "left";
+}
 
 // src/utils/banner.ts
 function getRandomCodeBanner() {
@@ -623,11 +638,11 @@ function getRandomHncSection2() {
     let imagePath;
     if (selectedCode === "s4") {
       const categoryLimits = limits[category] || limits.default;
-      const typeLimits = categoryLimits[type];
+      const typeLimits = categoryLimits[typeAssets];
       const maxIndex = typeLimits[1];
-      imagePath = `${category}/${type}/${maxIndex}`;
+      imagePath = `${category}/${typeAssets}/${maxIndex}`;
     } else {
-      imagePath = `${category}/${type}/${getRandomImageNumber(category, type)}.png`;
+      imagePath = `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`;
     }
     processedSectionData.items[category] = {
       order: index + 1,
@@ -647,11 +662,7 @@ function getRandomCodeSectionsHc() {
   return codes[Math.floor(Math.random() * codes.length)];
 }
 function processItemHcStyles(selectedCode) {
-  const processedStyles = {
-    background: false,
-    direction: "row",
-    displayCard: false
-  };
+  const processedStyles = {};
   switch (selectedCode) {
     case "s1":
     case "s2":
@@ -718,27 +729,12 @@ function getRandomDetails2() {
   };
   categoriesArray.forEach((category) => {
     const categoryData = {
-      headerImage: `${category}/headers/${getRandomImageNumber(category, "headers")}.png`,
-      detailImage: `${category}/details/${getRandomImageNumber(category, "details")}.png`
+      headerImage: `${category}/headers/${getRandomImageNumber("headers", category)}.png`,
+      detailImage: `${category}/details/${getRandomImageNumber("details", category)}.png`
     };
     processedSectionData.sectionTop[category] = categoryData;
   });
   return processedSectionData;
-}
-function getAlignment(selectedCode, index) {
-  if (selectedCode !== "s1") {
-    return alignment;
-  }
-  if (index === 0) {
-    return "start";
-  }
-  return index % 2 === 1 ? "end" : "start";
-}
-function getContentPosition(index) {
-  if (index === 0) {
-    return "left";
-  }
-  return index % 2 === 1 ? "right" : "left";
 }
 function templateMultiPortal(themeName) {
   return {
@@ -936,8 +932,6 @@ function templateStreamPortal(themeName, sections) {
 
 // src/index.ts
 function getThemeTemplate(themeName, sections) {
-  console.log(sections);
-  console.log(themeName);
   switch (themeName) {
     case "mono-portal":
       return templateMonoPortal(themeName, sections[0]);

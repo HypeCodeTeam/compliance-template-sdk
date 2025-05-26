@@ -4,8 +4,6 @@ import { templateMultiPortal } from './templates/templateMultiPortal';
 import { templateStreamPortal } from './templates/templateStreamPortal';
 
 export function getThemeTemplate(themeName: string, sections: string[]) {
-  console.log(sections);
-  console.log(themeName);
   switch (themeName) {
     case 'mono-portal':
       return templateMonoPortal(themeName, sections[0]);
