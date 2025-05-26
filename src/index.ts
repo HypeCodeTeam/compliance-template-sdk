@@ -149,6 +149,7 @@ export async function getThemeContent(
           }
           return array;
         }
+
         function getSubCategories(category: keyof typeof subCategories) {
           return subCategories[category] || [];
         }
@@ -162,8 +163,8 @@ export async function getThemeContent(
         function getRandomHncHeader() {
           const code = getRandomCodeHeader();
           const alignment = getRandomValue("start", "center", "end");
-          const variant = getRandomValue("default ||modern");
-          const anchor = getRandomValue("left ||right");
+          const variant = getRandomValue("default", "modern");
+          const anchor = getRandomValue("left", "right");
 
           return {
             code,
@@ -184,8 +185,8 @@ export async function getThemeContent(
         function getRandomHcHeader() {
           const code = getRandomCodeHeader();
           const alignment = getRandomValue("start", "center", "end");
-          const variant = getRandomValue("default ||modern");
-          const anchor = getRandomValue("left ||right");
+          const variant = getRandomValue("default", "modern");
+          const anchor = getRandomValue("left", "right");
 
           return {
             code,
