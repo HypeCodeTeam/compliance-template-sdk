@@ -957,6 +957,8 @@ function templateStreamPortal(themeName, sections) {
 
 // src/index.ts
 function getThemeTemplate(themeName, sections) {
+  console.log(sections);
+  console.log(themeName);
   switch (themeName) {
     case "mono-portal":
       return templateMonoPortal(themeName, sections);
