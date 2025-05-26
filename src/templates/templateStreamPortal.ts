@@ -82,7 +82,11 @@ function getRandomCodeSectionsHc() {
 }
 
 function processItemHcStyles(selectedCode: string) {
-  const processedStyles = {};
+  const processedStyles = {
+    background: false,
+    direction: 'row',
+    displayCard: false,
+  };
 
   switch (selectedCode) {
     case 's1':
@@ -169,25 +173,25 @@ function getRandomDetails() {
   return processedSectionData;
 }
 
-export function templateStreamPortal(themeName: string, sections: string) {
+export function templateStreamPortal(themeName: string, sections: string[]) {
   return {
     hnc: {
       header: getRandomHncHeader(),
-      sectionTop: getRandomSectionTop(themeName, sections),
+      sectionTop: getRandomSectionTop(themeName, sections[0]),
       sections: getRandomHncSection(),
-      ...(includeFeature && { features: getRandomFeature(themeName, sections) }),
-      ...(includeBanner && { banner: getRandomBanner(themeName, sections) }),
-      ...(includePlan && { plan: getRandomPlan(themeName, sections) }),
+      ...(includeFeature && { features: getRandomFeature(themeName, sections[0]) }),
+      ...(includeBanner && { banner: getRandomBanner(themeName, sections[0]) }),
+      ...(includePlan && { plan: getRandomPlan(themeName, sections[0]) }),
       ...(includeFAQ && { faq: getRandomFAQ() }),
-      footer: getRandomFooter(themeName, sections),
+      footer: getRandomFooter(themeName, sections[0]),
     },
     hc: {
       header: getRandomHcHeader(),
       sections: getRandomHcSection(),
-      ...(includeFeature && { features: getRandomFeature(themeName, sections) }),
-      ...(includeBanner && { banner: getRandomBanner(themeName, sections) }),
-      ...(includePlan && { plan: getRandomPlan(themeName, sections) }),
-      footer: getRandomFooter(themeName, sections),
+      ...(includeFeature && { features: getRandomFeature(themeName, sections[0]) }),
+      ...(includeBanner && { banner: getRandomBanner(themeName, sections[0]) }),
+      ...(includePlan && { plan: getRandomPlan(themeName, sections[0]) }),
+      footer: getRandomFooter(themeName, sections[0]),
     },
     details: getRandomDetails(),
     theme: {

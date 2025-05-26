@@ -3,12 +3,12 @@ import { templateMonoPortal } from './templates/templateMonoPortal';
 import { templateMultiPortal } from './templates/templateMultiPortal';
 import { templateStreamPortal } from './templates/templateStreamPortal';
 
-export function getThemeTemplate(themeName: string, sections: string) {
+export function getThemeTemplate(themeName: string, sections: string[]) {
   console.log(sections);
   console.log(themeName);
   switch (themeName) {
     case 'mono-portal':
-      return templateMonoPortal(themeName, sections);
+      return templateMonoPortal(themeName, sections[0]);
     case 'multi-portal':
       return templateMultiPortal(themeName);
     case 'stream-portal':
