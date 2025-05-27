@@ -33,7 +33,7 @@ import {
 // SECTION-HNC
 function getRandomHncSection() {
   const sectionCodes = ['s1', 's2', 's3'];
-  const sectionConfig = {
+  const sectionConfig: Record<string, number[]> = {
     s1: [4, 6, 8],
     s2: [4],
     s3: [4],
@@ -42,7 +42,7 @@ function getRandomHncSection() {
   const numSections = Math.floor(Math.random() * sectionCodes.length) + 1;
   const selectedSections = sectionCodes.sort(() => Math.random() - 0.5).slice(0, numSections);
 
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     order: 1,
     items: [],
   };
@@ -122,7 +122,7 @@ function getCategoryItemLimit(categoryCode: string) {
 }
 
 function getRandomHcSection() {
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     order: 1,
     items: {},
   };
@@ -154,7 +154,7 @@ function getRandomCodeSubcategories() {
 }
 
 function getRandomDetails() {
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     sectionTop: {},
     subcategories: {
       code: getRandomCodeSubcategories(),

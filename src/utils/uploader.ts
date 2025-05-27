@@ -10,7 +10,7 @@ export function getRandomUploader() {
   const code = getRandomCodeUploader();
   const hasButton = getRandomBoolean();
   const hasImage = getRandomBoolean();
-  const uploader = {
+  const uploader: Record<string, any> = {
     code,
     button: hasButton,
     ...(hasButton && {

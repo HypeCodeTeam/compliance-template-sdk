@@ -21,7 +21,7 @@ export function getRandomSectionTop(themeName: string, sections?: string) {
   if (code === 'st2') {
     return {
       code,
-      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`,
+      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`,
       contentPosition,
       buttonVariant,
       buttonStyle,
@@ -30,7 +30,7 @@ export function getRandomSectionTop(themeName: string, sections?: string) {
   if (code === 'st3') {
     return {
       code,
-      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`,
+      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`,
       contentPosition,
       alignment,
       buttonVariant,
@@ -40,7 +40,7 @@ export function getRandomSectionTop(themeName: string, sections?: string) {
 
   return {
     code,
-    image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`,
+    image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`,
     backgroundOpacity: true,
   };
 }

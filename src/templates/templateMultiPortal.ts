@@ -42,7 +42,7 @@ function getRandomCodeSectionsHnc() {
 function getRandomHncSection() {
   const selectedCode = getRandomCodeSectionsHnc();
 
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     order: 1,
     code: selectedCode,
     items: {},
@@ -118,7 +118,7 @@ function getCategoryItemLimit(categoryCode: string) {
 }
 
 function getRandomHcSection() {
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     order: 1,
     items: {},
   };
@@ -150,7 +150,7 @@ function getRandomCodeSubcategories() {
 }
 
 function getRandomDetails() {
-  const processedSectionData = {
+  const processedSectionData: Record<string, any> = {
     sectionTop: {},
     subcategories: {
       code: getRandomCodeSubcategories(),

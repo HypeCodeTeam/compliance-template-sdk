@@ -14,7 +14,7 @@ export function getRandomFAQ() {
     item: Math.floor(Math.random() * 5) + 3,
   };
 
-  let style: { icon: boolean; border: boolean; iconPosition?: string };
+  let style: { icon: boolean; border: boolean; iconPosition?: string } | undefined;
 
   switch (code) {
     case 'faq3':

@@ -52,7 +52,7 @@ export function addRandomImagesToItems(
     const randomIndex = Math.floor(Math.random() * items.length);
     items[randomIndex].image = `${category}/${typeAssets}/${getRandomImageNumber(
       typeAssets,
-      category,
+      category || '',
     )}.png`;
   }
 
@@ -75,7 +75,7 @@ export function getRandomPlan(themeName: string, sections?: string) {
   };
 
   if (code === 'p1') {
-    plan.image = `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`;
+    plan.image = `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`;
     plan.contentPosition = contentPosition;
   }
 

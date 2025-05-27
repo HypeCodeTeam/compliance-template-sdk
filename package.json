@@ -5,13 +5,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
-    "lint-resolve": "eslint \"src/**/*.{ts,tsx,js,jsx}\" . --fix",
-    "build": "tsup src/index.ts --format esm,cjs --dts"
+    "build": "npx tsc"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
-    "tsup": "^7.2.0",
     "typescript": "^5.8.2"
   }
 }

@@ -17,7 +17,7 @@ export function getRandomFooter(themeName: string, sections?: string) {
         image:
           themeName === 'converter-portal'
             ? `converter/${Math.floor(Math.random() * 49) + 1}.png`
-            : `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`,
+            : `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`,
       }),
     style: {
       background: getRandomBoolean(),

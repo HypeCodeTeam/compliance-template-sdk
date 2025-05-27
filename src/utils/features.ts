@@ -31,7 +31,7 @@ export function getRandomFeature(themeName: string, sections?: string) {
     code: getRandomCodeFeature(),
     items: randomItems,
     ...(getRandomBoolean() && {
-      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category)}.png`,
+      image: `${category}/${typeAssets}/${getRandomImageNumber(typeAssets, category || '')}.png`,
     }),
     buttonVariant,
     buttonStyle,
