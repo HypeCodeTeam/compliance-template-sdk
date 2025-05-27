@@ -10,8 +10,8 @@
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "devDependencies": {
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.13.4",
     "tsup": "^7.2.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.2"
   }
 }
